@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,6 +41,9 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
+import javax.swing.BoxLayout;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
 
 public class GUI {
 
@@ -53,6 +58,10 @@ public class GUI {
 	
 
 	private JTree tree;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -61,17 +70,17 @@ public class GUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.luna.LunaLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-					UIManager.setLookAndFeel("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-					// UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.luna.LunaLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");
+					 UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+//					 UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
 					GUI window = new GUI();
 					window.frmFileManipulator.setVisible(true);
 				} catch (Exception e) {
@@ -110,11 +119,9 @@ public class GUI {
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel_1.add(panel_3, BorderLayout.CENTER);
 		panel_3.setLayout(new GridLayout(10, 1, 0, 0));
-
-		JTextField lblNewLabel = new JTextField("File location.");
-		panel_3.add(lblNewLabel);
 
 		JButton btnNewButton_2 = new JButton("Open File");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -145,17 +152,25 @@ public class GUI {
 				btnNewButton_3.setEnabled(true);
 			}
 		});
+				
+				JLabel lblNewLabel_4 = new JLabel("");
+				lblNewLabel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				panel_3.add(lblNewLabel_4);
+		
+				JTextField lblNewLabel = new JTextField(" File location.");
+				panel_3.add(lblNewLabel);
 		btnNewButton_2.setEnabled(false);
 		
 		panel_3.add(btnNewButton_2, BorderLayout.CENTER);
 
 		JLabel lblNewLabel_3 = new JLabel("Choose how you want to  manipulate the file.", SwingConstants.CENTER);
+		lblNewLabel_3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_3.add(lblNewLabel_3);
 
 		JPanel panel_2 = new JPanel();
 		panel_3.add(panel_2);
 
-		String[] options = { "Make Text Large", "Make Text Small", "Change Text", "Save Text", "Delete File" };
+		String[] options = { " Make Text Large", " Make Text Small", " Change Text", " Save Text", " Delete File" };
 		@SuppressWarnings({ "rawtypes", "unchecked" })
 		JComboBox comboBox = new JComboBox(options);
 		panel_2.setLayout(new BorderLayout(0, 0));
@@ -165,7 +180,7 @@ public class GUI {
 			public void actionPerformed(ActionEvent arg0) {
 				String temp = String.valueOf(comboBox.getSelectedItem());
 
-				if (temp.equals("Make Text Large")) {
+				if (temp.equals(" Make Text Large")) {
 
 					String temp1;
 					textPane.setText("");
@@ -173,15 +188,53 @@ public class GUI {
 					JOptionPane.showMessageDialog(frmFileManipulator, "Text Manipulated to all Uppercase.");
 
 					System.out.println("working");
-				} else if (temp.equals("Make Text Small")) {
+				} else if (temp.equals(" Make Text Small")) {
 					String temp2;
 					textPane.setText("");
 					textPane.append(temp2 = sb.toString().toLowerCase());
 					JOptionPane.showMessageDialog(frmFileManipulator, "Text Manipulated to all Lowercase.");
 
-				} else if (temp.equals("Change Text")) {
+				} else if (temp.equals(" Change Text")) {
+					
+				        final JPanel panel = new JPanel();
+				        panel.setPreferredSize(new Dimension(500, 200));
+				        panel.setLayout(new BorderLayout(0, 0));
+				        final JLabel label = new JLabel("Choose your deatils", SwingConstants.CENTER);
+				        final JPanel panel_1 = new JPanel(new GridLayout(4,1));
+				        final JPanel panel_2 = new JPanel(new BorderLayout(0, 0));
+				        final JPanel panel_3 = new JPanel(new GridLayout(1,4));
+				        final JRadioButton button1 = new JRadioButton("1");
+				        final JRadioButton button2 = new JRadioButton("2");
+				        final JRadioButton button3 = new JRadioButton("3");
+				        final JRadioButton button4 = new JRadioButton("4");
+				        final JScrollPane scrollPane = new JScrollPane();
+				    	final JTextArea textPane = new JTextArea();
+						scrollPane.setViewportView(textPane);
+				       
+						panel_2.add(scrollPane, BorderLayout.CENTER);
+						
+						
+						
+						panel.add(panel_1,BorderLayout.NORTH);
+				        
+				        panel.add(panel_2,BorderLayout.CENTER);
+				       
+				        panel_1.add(label);
+				        panel_1.add(panel_3);
+				        panel_3.add(button1);
+				        panel_3.add(button2);
+				        panel_3.add(button3);
+				        panel_3.add(button4);
+//				        panel_1.add(button1);
+//				        panel_1.add(button2);
+				        
+				        
+				        
+				        
 
-				} else if (temp.equals("Save Text")) {
+				        JOptionPane.showMessageDialog(null, panel);
+
+				} else if (temp.equals(" Save Text")) {
 
 					JFileChooser fileChooser = new JFileChooser();
 					fileChooser.setDialogTitle("Specify a file to save");
@@ -203,7 +256,7 @@ public class GUI {
 								"File Saved to: " + fileToSave.getAbsolutePath());
 					}
 
-				} else if (temp.equals("Delete File")) {
+				} else if (temp.equals(" Delete File")) {
 					File file = new File(filePath);
 
 					if (file.delete()) {
@@ -219,6 +272,58 @@ public class GUI {
 		btnNewButton_3.setEnabled(false);
 		panel_2.add(btnNewButton_3, BorderLayout.EAST);
 		panel_2.add(comboBox, BorderLayout.CENTER);
+		
+		JLabel lblRepalcementTextDetails = new JLabel("Create metadata for file", SwingConstants.CENTER);
+		lblRepalcementTextDetails.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_3.add(lblRepalcementTextDetails);
+		
+		JPanel panel_4 = new JPanel();
+		panel_3.add(panel_4);
+		panel_4.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblName = new JLabel("Name:", SwingConstants.CENTER);
+		lblName.setPreferredSize(new Dimension(75, 15));
+		panel_4.add(lblName, BorderLayout.WEST);
+		
+		textField = new JTextField();
+		panel_4.add(textField, BorderLayout.CENTER);
+		textField.setColumns(10);
+		
+		JPanel panel_7 = new JPanel();
+		panel_3.add(panel_7);
+		panel_7.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblDate = new JLabel("Date:", SwingConstants.CENTER);
+		lblDate.setPreferredSize(new Dimension(75, 15));
+		panel_7.add(lblDate, BorderLayout.WEST);
+		
+		textField_1 = new JTextField();
+		panel_7.add(textField_1, BorderLayout.CENTER);
+		textField_1.setColumns(10);
+		
+		JPanel panel_8 = new JPanel();
+		panel_3.add(panel_8);
+		panel_8.setLayout(new BorderLayout(0, 0));
+		
+		textField_2 = new JTextField();
+		panel_8.add(textField_2, BorderLayout.CENTER);
+		textField_2.setColumns(10);
+		
+		JLabel lblProject = new JLabel("Project:", SwingConstants.CENTER);
+		lblProject.setPreferredSize(new Dimension(75, 15));
+		panel_8.add(lblProject, BorderLayout.WEST);
+		
+		JPanel lblNewLabel_5 = new JPanel();
+		panel_3.add(lblNewLabel_5);
+		lblNewLabel_5.setLayout(new BorderLayout(0, 0));
+		
+		textField_3 = new JTextField();
+		lblNewLabel_5.add(textField_3, BorderLayout.CENTER);
+		textField_3.setColumns(10);
+		
+		JLabel lblCopyright = new JLabel("Email:", SwingConstants.CENTER);
+		lblCopyright.setPreferredSize(new Dimension(75, 15));
+		lblNewLabel_5.add(lblCopyright, BorderLayout.WEST);
 
 		JScrollPane scrollPane_1 = new JScrollPane(tree);
 		scrollPane_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
