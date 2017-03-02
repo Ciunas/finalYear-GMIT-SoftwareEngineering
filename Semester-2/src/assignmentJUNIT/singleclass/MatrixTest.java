@@ -1,4 +1,4 @@
-package assignmentJUNIT;
+package assignmentJUNIT.singleclass;
 
 import static org.junit.Assert.*;
 

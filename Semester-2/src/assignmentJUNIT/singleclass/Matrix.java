@@ -1,4 +1,4 @@
-package assignmentJUNIT;
+package assignmentJUNIT.singleclass;
 
 public class Matrix {
 	
