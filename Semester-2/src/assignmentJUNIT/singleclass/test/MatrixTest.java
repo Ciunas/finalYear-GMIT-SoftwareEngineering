@@ -1,4 +1,4 @@
-package assignmentJUNIT.singleclass;
+package assignmentJUNIT.singleclass.test;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import assignmentJUNIT.singleclass.Matrix;
 
 public class MatrixTest {
 
@@ -20,7 +22,12 @@ public class MatrixTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	
+	
+	/*
+	 * Test that two elements are equal in matrix that has been coppied
+	 */
 	@Test
 	public void arrayTest2D() {
 		
@@ -30,15 +37,11 @@ public class MatrixTest {
 		assertEquals("Doubles are equal", d[0][0], D.getData(0 ,0), 0.01); // fourth value is the amount of decimal places that it asserts to.
 	}
 	
-//	@Test
-//	public void printTest() {
-//		
-//		double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3 } };
-//		Matrix D = new Matrix(d);
-//	    assertEquals("1", D.getData(0 ,0));
-//	}
+
 	
-	
+	/*
+	 * Test that the two matrixes are the same
+	 */
 	@Test
 	public void equals() {
 		
@@ -49,6 +52,10 @@ public class MatrixTest {
 	    assertTrue(A.eq(D));
 	}
 	
+	
+	/*
+	 * Test the transpostion of a matrix reutrns the correct answere
+	 */
 	@Test
 	public void testTranspose() {
 		
@@ -58,8 +65,9 @@ public class MatrixTest {
 	    assertFalse(A.eq(D));
 	}
 	
-	
-	
+	/*
+	 * Testing for an exception being thrown. RUntime exception. Exception thrown inhte plus method when two matrices are differnet size
+	 */
 	@Test
 	public void illegalPlusError() throws Exception {
 		thrown.expect(RuntimeException.class);
@@ -70,6 +78,9 @@ public class MatrixTest {
 
 	}
 
+	/*
+	 * Testing that the addition of two matrices return the correct answer
+	 */
 	@Test
 	public void testPlusMethod() throws Exception {
 		double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3 } };
@@ -81,6 +92,9 @@ public class MatrixTest {
     }
 	
 	
+	/*
+	 * Testing for an exception being thrown. RUntime exception. Exception thrown in the minus method when two matrices are different size
+	 */
 	@Test
     public void illegalMiusError()  throws Exception{
 		thrown.expect(RuntimeException.class);
@@ -92,6 +106,9 @@ public class MatrixTest {
     }
 	
 	
+	/*
+	 * Testing the minus method, asserting theat the correct answere is returned when two matrices are subtracted.
+	 */
 	@Test
     public void testMinusMethod()  throws Exception{
 		double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3 } };
@@ -102,6 +119,9 @@ public class MatrixTest {
 		assertEquals(C.getData(0, 0), 0, 0);  
     }
 	
+	/*
+	 * Testing for an exception being thrown. RUntime exception. Excetpiotn thrown wehn trying to multiple two matrices. If the aren't multiplyable
+	 */
 	@Test
     public void illegalMultiplicationError()  throws Exception{
 		thrown.expect(RuntimeException.class);
@@ -111,6 +131,9 @@ public class MatrixTest {
 		Matrix E = A.times(C);               
     }
 	
+	/*
+	 * Testing hthat the answerer from a matrix multiplication method returns the correct answer.
+	 */
 	@Test
     public void testlMultiplication()  throws Exception{
 		double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3 } };
@@ -123,6 +146,9 @@ public class MatrixTest {
 	
 	
 	
+	/*
+	 * Testing two different Matrices are the same. Runtime exception of they are differnet sizes
+	 */
 	@Test
     public void testEqError()  throws Exception{
 		thrown.expect(RuntimeException.class);
@@ -133,6 +159,10 @@ public class MatrixTest {
         
     }
 	
+	
+	/*
+	 * Testing a swap method, swaps the rows of the amtrix.
+	 */
 	@Test
     public void testSwapMethod()  throws Exception{
 		
@@ -142,6 +172,9 @@ public class MatrixTest {
 		assertTrue( D.getData(1, 0) == 9); 
     }
 	
+	/*
+	 * Testing the getter is working row count of a Matrix
+	 */
 	@Test
     public void checkingElementMTest()  throws Exception{
 		
@@ -150,6 +183,11 @@ public class MatrixTest {
 		assertEquals(3, D.getM());
     }
 	
+	
+
+	/*
+	 * Testing the getter is working column count of a Matrix
+	 */
 	@Test
     public void checkingElementNTest()  throws Exception{
 		
@@ -158,6 +196,11 @@ public class MatrixTest {
 		assertEquals(3, D.getN());
     }
     
+	
+
+	/*
+	 * Testing the copy function of the Matrix. Both matrixes should be the same.
+	 */
     @Test
     public void copyTest()  throws Exception{
 		
@@ -167,6 +210,10 @@ public class MatrixTest {
 		assertTrue(A.eq(D));
     }
     
+
+	/*
+	 * Testing for the Identity Matrix
+	 */
     @Test
     public void identityMatrixTest1()  throws Exception{
     	
@@ -181,6 +228,11 @@ public class MatrixTest {
 		assertTrue(test);
     }
     
+    
+
+	/*
+	 * Testing that error  in the identity Matrix method
+	 */
     @Test
     public void identityMatrixTest2()  throws Exception{
     	
@@ -194,6 +246,11 @@ public class MatrixTest {
 		assertFalse(test);
     }
     
+    
+
+	/*
+	 * Testing teh show method, this prints a Matirx
+	 */
     @Test
     public void testShow()  throws Exception{
     	double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3 } };
@@ -203,7 +260,10 @@ public class MatrixTest {
     }
     
     
-	
+
+	/*
+	 * Testing for runtime errors in solve method. Illegal deimensions
+	 */ 
 	@Test
     public void testSolveRuntimeError()  throws Exception{
 		thrown.expect(RuntimeException.class);
@@ -216,6 +276,10 @@ public class MatrixTest {
         
     }
 	
+
+	/*
+	 * Testing for runtime errors in solve method. MAtrix is singular
+	 */
 	@Test
     public void testSolveRuntimeErrorSingular()  throws Exception{
 		thrown.expect(RuntimeException.class);
@@ -227,7 +291,9 @@ public class MatrixTest {
 		A.solve(B);            
     }
 	
-	
+	/*
+	 * Testing the solve method.
+	 */
     @Test
     public void testSolve()  throws Exception{
     	

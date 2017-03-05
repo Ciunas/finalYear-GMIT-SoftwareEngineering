@@ -58,7 +58,7 @@ public class Matrix {
 	}
 
 	// swap rows i and j
-	void swap(int i, int j) {
+	public void swap(int i, int j) {
 		double[] temp = data[i];
 		data[i] = data[j];
 		data[j] = temp;
