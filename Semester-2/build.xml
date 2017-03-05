@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="goodbye">
+	<target name="hello">
+		<echo message="Hello, worlrd" />
+	</target>
+	<target name="goodbye">
+		<echo message="GoodBye, wolrd" />
+	</target>
+</project>
+
+
+
